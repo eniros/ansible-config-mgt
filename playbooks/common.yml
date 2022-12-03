@@ -1,6 +1,6 @@
  ---
- - name: update web, nfs and db servers
-  hosts: webservers, nfs, db
+ - name: update web, nfs,lb and db servers
+  hosts: webservers, nfs, db,lb
   remote_user: ubuntu
   become: yes
   become_user: root
@@ -9,13 +9,7 @@
       yum:
         name: wireshark
         state: latest
-
-- name: update LB server
-  hosts: lb
-  remote_user: ubuntu
-  become: yes
-  become_user: root
-  tasks:
+tasks:
     - name: Update apt repo
       apt: 
         update_cache: yes
