@@ -1,6 +1,6 @@
  ---
- - name: update web, nfs,lb and db servers
-  hosts: webservers, nfs, db,lb
+- name: update web, nfs and db servers
+  hosts: WEB-SERVER-1-CI-CD-PROJECT, WEB-SERVER-2-CI-CD-PROJECT, LB-SERVER-CI-CD-PROJECT,NFS-SERVER-CI-CD-PROJECT ,DB-SERVER-CI-CD-PROJECT
   remote_user: ubuntu
   become: yes
   become_user: root
@@ -9,7 +9,13 @@
       yum:
         name: wireshark
         state: latest
-tasks:
+
+- name: update LB server
+  hosts: lb
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
     - name: Update apt repo
       apt: 
         update_cache: yes
