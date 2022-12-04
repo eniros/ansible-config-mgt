@@ -1,4 +1,4 @@
- ---
+---
 - name: update web, nfs and db servers
   hosts: WEBSCICD1, WEBSCICD2, LBCICD, NFSCICD ,DBCICD
   remote_user: ubuntu
