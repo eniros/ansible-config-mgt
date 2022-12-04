@@ -1,6 +1,6 @@
 ---
-- name: update web, nfs and db servers
-  hosts: WEBSCICD1, WEBSCICD2, LBCICD, NFSCICD ,DBCICD
+- name: DBCICD
+  hosts: DBCICD
   remote_user: ubuntu
   become: yes
   become_user: root
@@ -10,8 +10,8 @@
       name: wireshark
       state: removed
 
-- name: update LB server
-  hosts: lb
+- name: LB server
+  hosts: LBCICD
   remote_user: ubuntu
   become: yes
   become_user: root
@@ -21,5 +21,51 @@
       name: wireshark-qt
       state: absent
       autoremove: yes
+      purge: yes
+      autoclean: yes
+      
+ - name: WEBSCICD1
+  hosts: WEBSCICD1
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: delete wireshark
+    apt:
+      name: wireshark-qt
+      state: absent
+      autoremove: yes
+      purge: yes
+      autoclean: yes
+ 
+  - name: WEBSCICD2
+  hosts: WEBSCICD2
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: delete wireshark
+    apt:
+      name: wireshark-qt
+      state: absent
+      autoremove: yes
+      purge: yes
+      autoclean: yes
+      
+  - name: NFSCICD
+  hosts: NFSCICD
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: delete wireshark
+    apt:
+      name: wireshark-qt
+      state: absent
+      autoremove: yes
+      purge: yes
+      autoclean: yes
+
+
       purge: yes
       autoclean: yes
