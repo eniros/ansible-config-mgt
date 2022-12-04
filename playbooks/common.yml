@@ -1,6 +1,6 @@
  ---
 - name: update web, nfs and db servers
-  hosts: WEB-SERVER-1-CI-CD-PROJECT, WEB-SERVER-2-CI-CD-PROJECT, LB-SERVER-CI-CD-PROJECT,NFS-SERVER-CI-CD-PROJECT ,DB-SERVER-CI-CD-PROJECT
+  hosts: WEBSCICD1, WEBSCICD2, LBCICD, NFSCICD ,DBCICD
   remote_user: ubuntu
   become: yes
   become_user: root
